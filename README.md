@@ -43,8 +43,10 @@ machine.
 Requires Python 3.10 or newer.
 
 ```bash
-pip install laugh-tale
+pip install laugh-tale-mcp
 ```
+
+This installs the `laugh-tale` command.
 
 Then register it with your MCP client — either run `claude mcp add laugh-tale -- laugh-tale`,
 or add this to the client's config (e.g. `claude_desktop_config.json`):
