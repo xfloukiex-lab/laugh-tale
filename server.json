@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.xfloukiex-lab/laugh-tale",
+  "description": "The capstone of the Grand Line stack \u2014 collect every tool to reveal the One Piece.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/xfloukiex-lab/laugh-tale",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "laugh-tale-mcp",
+      "version": "0.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "laugh-tale"
+        }
+      ]
+    }
+  ]
+}
