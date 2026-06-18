@@ -11,7 +11,7 @@ Cursor, and others).
 
 ## What it does
 
-Laugh Tale is the final island. On its own it does nothing — it stays locked
+Laugh Tale is the final tool of the set. On its own it does nothing — it stays locked
 until you've installed the rest of the Grand Line stack.
 
 Each tool, when it runs, leaves a marker in a shared folder
