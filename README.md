@@ -1,53 +1,92 @@
 <!-- mcp-name: io.github.xfloukiex-lab/laugh-tale -->
-# 🏴‍☠️ Laugh Tale — the One Piece
+# 🏴‍☠️ Laugh Tale
 
-> **Fan-inspired homage. Not affiliated with, sponsored by, or endorsed by the
-> creators or rights holders of *One Piece* (Eiichiro Oda / Shueisha / Toei
-> Animation).** All code and artwork here are original; no official assets, logos,
-> or artwork are used. "One Piece" and related marks belong to their owners.
+<img src="icon.png" width="120" align="right" alt="Laugh Tale icon">
 
-<img src="icon.png" width="120" align="right">
+The capstone of the Grand Line stack. Collect every tool, and it reveals **the One Piece**.
 
-A [Model Context Protocol](https://modelcontextprotocol.io) server. The **capstone**. It stays locked until every Road Poneglyph rubbing is gathered — i.e. until all three fruits are installed and each has dropped its rubbing. Collect them all and `seek_the_one_piece` reveals **the One Piece**.
+A [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server — one
+focused tool you plug into an MCP-compatible client (Claude Desktop, Claude Code,
+Cursor, and others).
 
-**Tool:** `seek_the_one_piece`
+## What it does
 
-The reveal is an easter-egg — the three fruits are the real treasure. Works via a shared on-disk folder (`~/.grandline/poneglyphs/`), so the fruits can live in completely separate repos and still count.
+Laugh Tale is the final island. On its own it does nothing — it stays locked
+until you've installed the rest of the Grand Line stack.
+
+Each tool, when it runs, leaves a marker in a shared folder
+(`~/.grandline/poneglyphs/`). Laugh Tale reads that folder. While any tool is
+missing, it tells you which ones you still need. Once every tool is present, the
+markers line up and it reveals the One Piece.
+
+## Usage
+
+One tool:
+
+- `seek_the_one_piece` — locked until every Grand Line tool is installed. Run it
+  anytime: it either lists the tools still missing, or, when all are present,
+  reveals the One Piece.
+
+The reveal is a bit of fun, not a new capability — the other tools are the real
+treasure. It works purely off the shared marker folder, so the tools can live in
+completely separate packages and still count toward the unlock.
+
+**Tool reference:** `seek_the_one_piece()`
+
+## How it works
+
+**No API key, fully local.** It only reads the shared marker folder on your
+machine.
 
 ## Install
 
-Requires Python ≥ 3.10.
+Requires Python 3.10 or newer.
 
 ```bash
 pip install laugh-tale
 ```
 
-Then add to your MCP client config (e.g. Claude Desktop, or `claude mcp add`):
+Then register it with your MCP client — either run `claude mcp add laugh-tale -- laugh-tale`,
+or add this to the client's config (e.g. `claude_desktop_config.json`):
 
 ```json
-{ "mcpServers": { "laugh-tale": { "command": "laugh-tale" } } }
+{
+  "mcpServers": {
+    "laugh-tale": { "command": "laugh-tale" }
+  }
+}
 ```
+
+Restart the client and the tool is available.
+
+## The Grand Line stack
+
+Laugh Tale is part of a four-tool set. Each tool stands alone, but installing
+all of them unlocks a final surprise via **Laugh Tale**.
+
+| | Package | |
+|---|---|---|
+| 🗿 | [`road-poneglyph`](https://github.com/xfloukiex-lab/road-poneglyph) | Road Poneglyph |
+| ⚔️ | [`conquerors-haki`](https://github.com/xfloukiex-lab/conquerors-haki) | Conqueror's Haki |
+| ⏳ | [`toki-toki`](https://github.com/xfloukiex-lab/toki-toki) | Toki Toki no Mi |
+| 🏴‍☠️ | [`laugh-tale`](https://github.com/xfloukiex-lab/laugh-tale) | Laugh Tale  ·  **← this repo** |
 
 ## Develop
 
 ```bash
 git clone https://github.com/xfloukiex-lab/laugh-tale
 cd laugh-tale
-python -m venv .venv && . .venv/Scripts/activate   # or .venv/bin/activate
+python -m venv .venv && . .venv/Scripts/activate   # macOS/Linux: source .venv/bin/activate
 pip install -e ".[dev]"
 python tests/test_laugh_tale.py
 ```
 
-## 🏴‍☠️ Part of the Grand Line stack — collect them all
+## Attribution & license
 
-Each tool drops a *poneglyph rubbing* into `~/.grandline/poneglyphs/`. Install all of them and **Laugh Tale** reveals the One Piece.
+Released under the **Apache-2.0** license. The icon is original artwork
+(see `icon.svg`), generated locally; the repository ships no third-party assets.
 
-- 🗿 [`road-poneglyph`](https://github.com/xfloukiex-lab/road-poneglyph) — Road Poneglyph
-- ⚔️ [`conquerors-haki`](https://github.com/xfloukiex-lab/conquerors-haki) — Conqueror's Haki
-- ⏳ [`toki-toki`](https://github.com/xfloukiex-lab/toki-toki) — Toki Toki no Mi
-- 🏴‍☠️ [`laugh-tale`](https://github.com/xfloukiex-lab/laugh-tale) — Laugh Tale — the One Piece ← you are here
-
-## License
-
-Apache-2.0. Icon: original art (see source `icon.svg`); generated locally, no
-official assets.
+*This is a fan-inspired project. It is not affiliated with, sponsored by, or
+endorsed by the creators or rights holders of* One Piece *(Eiichiro Oda /
+Shueisha / Toei Animation). "One Piece" and related names are used only as
+thematic flavour and remain the property of their respective owners.*
